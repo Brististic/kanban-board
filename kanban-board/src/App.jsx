@@ -5,7 +5,9 @@ import { useDraggable, useDroppable } from '@dnd-kit/core';
 
 const columns = ['To Do', 'In Progress', 'Done'];
 const apiHost = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-const apiOrigin = /^https?:\/\//i.test(apiHost) ? apiHost : `https://${apiHost}`;
+const apiOrigin = /^https?:\/\//i.test(apiHost)
+  ? apiHost
+  : `https://${apiHost.includes('.') ? apiHost : `${apiHost}.onrender.com`}`;
 const BACKEND_URL = `${apiOrigin.replace(/\/+$/, '')}/api/tasks`;
 
 const getColumnStyle = (title) => {
