@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "postinstall": "node node_modules/node-gyp/bin/node-gyp.js rebuild --directory=node_modules/sqlite3",
     "start": "nodemon server.js"
   },
   "keywords": [],
