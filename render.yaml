@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     rootDir: kanban-backend
-    buildCommand: npm install
+    buildCommand: npm install --build-from-source=sqlite3
     startCommand: node server.js
     healthCheckPath: /health
 
