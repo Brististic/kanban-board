@@ -3,7 +3,7 @@ const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -43,6 +43,10 @@ db.serialize(() => {
 });
 
 // --- API ENDPOINTS ---
+
+app.get('/health', (req, res) => {
+  res.sendStatus(200);
+});
 
 // 1. GET ALL TASKS
 app.get('/api/tasks', (req, res) => {

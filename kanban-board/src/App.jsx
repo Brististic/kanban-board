@@ -4,7 +4,9 @@ import { DndContext } from '@dnd-kit/core';
 import { useDraggable, useDroppable } from '@dnd-kit/core';
 
 const columns = ['To Do', 'In Progress', 'Done'];
-const BACKEND_URL = 'http://localhost:5000/api/tasks';
+const apiHost = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const apiOrigin = /^https?:\/\//i.test(apiHost) ? apiHost : `https://${apiHost}`;
+const BACKEND_URL = `${apiOrigin.replace(/\/+$/, '')}/api/tasks`;
 
 const getColumnStyle = (title) => {
   switch (title) {
